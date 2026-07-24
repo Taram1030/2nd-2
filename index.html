@@ -17,6 +17,12 @@ main{max-width:1180px;margin:auto;padding:18px}.hero{padding:30px;border-radius:
 .answer-circle{stroke-dasharray:12 8;animation:drawAnswer 1.1s ease-out forwards,answerPulse 1.8s ease-in-out 1.1s infinite;transform-origin:center} @keyframes drawAnswer{from{stroke-dashoffset:520;opacity:.15}to{stroke-dashoffset:0;opacity:1}} @keyframes answerPulse{0%,100%{stroke-width:6;opacity:1}50%{stroke-width:10;opacity:.7}}
 @media(max-width:760px){.construction-layout{grid-template-columns:1fr}.answer-toggle-wrap{position:static;display:flex;justify-content:flex-end;margin-bottom:8px}.toolbar{grid-template-columns:repeat(3,1fr)}.tool{text-align:center;font-size:12px;padding:9px}.canvas{height:52vh}.cards,.choicegrid{grid-template-columns:1fr}.brand{font-size:14px}.topstamp{width:44px;height:44px;flex-basis:44px}}
 </style>
+
+<style id="creator-credit-style">
+#creatorCredit{position:fixed;right:14px;bottom:10px;z-index:9999;padding:7px 11px;border-radius:999px;background:rgba(17,24,39,.78);color:#fff;font-size:13px;font-weight:800;letter-spacing:.2px;box-shadow:0 4px 14px rgba(0,0,0,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;user-select:none;-webkit-user-select:none;}
+@media(max-width:640px){#creatorCredit{right:8px;bottom:7px;font-size:11px;padding:6px 9px}}
+@media print{#creatorCredit{display:none}}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -94,5 +100,6 @@ function updateTeacherRecord(){$('#teacherRecord').innerHTML=state.bestPoint?`<s
 $('#saveCodes').onclick=()=>{for(let i=1;i<=7;i++)codes[i]=$(`#tc${i}`).value.trim();localStorage.setItem('triangleTourCodesV2',JSON.stringify(codes));alert('저장했습니다.')};$('#openFinal').onclick=()=>{state.finalOpen=true;save();renderMap();alert('최종 활동을 열었습니다.')};$('#closeFinal').onclick=()=>{state.finalOpen=false;save();renderMap();alert('최종 활동을 닫았습니다.')};$('#resetAll').onclick=()=>{if(confirm('현재 기기의 모든 학생 기록을 초기화할까요?')){localStorage.removeItem('triangleTourStateV2');location.reload()}};
 updateTop();if(state.name)renderMap();else setScreen('start');
 </script>
+<div id="creatorCredit" aria-label="제작자">made by 지경쌤</div>
 </body>
 </html>
